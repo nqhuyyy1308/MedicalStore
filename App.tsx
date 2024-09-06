@@ -5,7 +5,6 @@
  * @format
  */
 
-
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
