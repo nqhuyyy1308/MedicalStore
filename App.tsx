@@ -47,7 +47,7 @@ const App = () => {
     if (Platform.OS === 'android') SplashScreen.hide();
   }, []);
 
-  const renderItem = ({item}: {item: OnboardingCarousel}) => {
+  const renderItem = (item: OnboardingCarousel) => {
     return (
       <View>
         <Text style={styles.textH1}>{item.title}</Text>
@@ -71,7 +71,7 @@ const App = () => {
       <Carousel
         ref={carouselRef}
         data={carouselItems}
-        renderItem={renderItem}
+        renderItem={({item}) => renderItem(item)}
         sliderWidth={300}
         itemWidth={300}
         slideStyle={styles.carouselViewContainer}
