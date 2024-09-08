@@ -4,8 +4,8 @@
  *
  * @format
  */
-import React, {useEffect, useRef} from 'react';
-import {Image, Platform, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Image, Platform, StyleSheet, Text, Touchable, TouchableOpacity, View} from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 import SplashScreen from 'react-native-splash-screen';
@@ -43,22 +43,40 @@ const carouselItems: OnboardingCarousel[] = [
 const App = () => {
   const carouselRef = useRef();
 
+  const [indexSelected, setIndexSelected] = useState(0);
+
   useEffect(() => {
     if (Platform.OS === 'android') SplashScreen.hide();
   }, []);
 
   const renderItem = (item: OnboardingCarousel) => {
-    return (
+    return(
       <View>
         <Text style={styles.textH1}>{item.title}</Text>
         <Text style={styles.textDesc}>{item.descriptions}</Text>
       </View>
-    );
-  };
+    )
+  }
 
-  const onScrollIndexChanged = (index: number) => {
-    console.log('current index', index);
-  };
+  const onScrollIndexChanged = (index:number) => {
+    console.log('index', index)
+    setIndexSelected(index)
+  }
+
+  const onClickSkip = () => {
+    if(indexSelected > 0){
+      setIndexSelected(indexSelected - 1)
+      carouselRef.current.snapToItem(indexSelected - 1)
+    }
+  }
+
+  const onClickNext = () => {
+    if(indexSelected < carouselItems.length - 1){
+      setIndexSelected(indexSelected + 1)
+      carouselRef.current.snapToItem(indexSelected + 1)
+    }
+  }
+
 
   return (
     <View style={styles.container}>
@@ -69,18 +87,23 @@ const App = () => {
         />
       </View>
       <Carousel
-        ref={carouselRef}
-        data={carouselItems}
-        renderItem={({item}) => renderItem(item)}
-        sliderWidth={300}
-        itemWidth={300}
-        slideStyle={styles.carouselViewContainer}
-        onScrollIndexChanged={onScrollIndexChanged}
-      />
-
+              ref={carouselRef}
+              data={carouselItems}
+              renderItem={({item}) => renderItem(item)}
+              sliderWidth={300}
+              itemWidth={300}
+              slideStyle = {styles.carouselViewContainer}
+              onScrollIndexChanged = {onScrollIndexChanged}
+            />
       <View style={styles.footerSection}>
-        <Text style={styles.animationText}>Skip</Text>
-        <Text style={styles.animationText}>Next</Text>
+        <TouchableOpacity onPress={onClickSkip} style={styles.preAnimationClick}><Text style={[styles.preAnimationText, indexSelected > 0 && styles.isPreAnimation]}>Skip</Text></TouchableOpacity>
+        <View style={styles.wrapIndexSelect}>
+          <Text style={[styles.indexSelect, indexSelected === 0 && styles.indexSelected]}></Text>
+          <Text style={[styles.indexSelect, indexSelected === 1 && styles.indexSelected]}></Text>
+          <Text style={[styles.indexSelect, indexSelected === 2 && styles.indexSelected]}></Text>
+          <Text style={[styles.indexSelect, indexSelected === 3 && styles.indexSelected]}></Text>
+        </View>
+        <TouchableOpacity onPress={onClickNext} style={styles.conAnimationClick}><Text style={styles.conAnimationText}>Next</Text></TouchableOpacity>
       </View>
     </View>
   );
@@ -129,11 +152,66 @@ const styles = StyleSheet.create({
     width: 256.3,
   },
 
+  wrapIndexSelect: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexGrow: 1,
+    justifyContent: 'center',
+    marginBottom: 16
+  },
+
+  indexSelect:{
+    height: 5,
+    width: 5,
+    borderRadius: 5,
+    backgroundColor: '#C4C4C4',
+    marginLeft: 4,
+    marginRight: 4
+  },
+
+  indexSelected: {
+    height: 5,
+    width: 5,
+    borderRadius: 5,
+    backgroundColor: '#4157FF',
+    marginLeft: 4,
+    marginRight: 4
+  },
+
   footerSection: {
     flexDirection: 'row',
   },
 
-  animationText: {},
+  preAnimationClick: {
+    flex: 1,
+    marginBottom: 16
+  },
+
+  preAnimationText: {
+    color: '#090F4773',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '400'
+  },
+
+  isPreAnimation: {
+    color: '#4157FF',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '700'
+  },
+
+  conAnimationClick: {
+    flex: 1,
+    marginBottom: 16
+  },
+
+  conAnimationText: {
+    color: '#4157FF',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: '700'
+  },
 });
 
 export default App;
