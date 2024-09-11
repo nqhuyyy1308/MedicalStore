@@ -32,6 +32,14 @@ class MainApplication : Application(), ReactApplication {
   override val reactHost: ReactHost
     get() = getDefaultReactHost(applicationContext, reactNativeHost)
 
+  override fun registerReceiver(receiver: BroadcastReceiver?, filter: IntentFilter): Intent? {
+      return if (Build.VERSION.SDK_INT >= 34 && applicationInfo.targetSdkVersion >= 34) {
+          super.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED)
+      } else {
+          super.registerReceiver(receiver, filter)
+      }
+  }
+
   override fun onCreate() {
     super.onCreate()
     SoLoader.init(this, false)
