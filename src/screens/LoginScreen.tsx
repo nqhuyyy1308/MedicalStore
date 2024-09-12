@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import {Button, Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View} from 'react-native';
 
 const LoginScreen = ({navigation}: any) => {
 
   const clickOnNext = () =>  {
-    navigation.navigate('VerifyOTP')
+    navigation.navigate('VerifyOTP', {indexNumber})
   }
+
+  const [indexNumber, setIndexNumber] = useState();
 
   return (
     <View style={styles.container}>
@@ -21,7 +24,9 @@ const LoginScreen = ({navigation}: any) => {
         <TextInput
           placeholder="+84 764951786"
           style={styles.formInput}
-        
+          keyboardType = 'numeric'
+          onChangeText={(number) => setIndexNumber(number)}
+          value = {indexNumber}
         />
         <TouchableOpacity onPress={clickOnNext} style={styles.formButton}><Text style={styles.buttonText}>CONTINUE</Text></TouchableOpacity>
       </View>
