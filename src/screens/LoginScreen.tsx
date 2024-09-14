@@ -1,36 +1,51 @@
-import { useState } from 'react';
-import {Button, Image, StyleSheet, Text, TextInput, Touchable, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const LoginScreen = ({navigation}: any) => {
-
-  const clickOnNext = () =>  {
-    navigation.navigate('VerifyOTP', {indexNumber})
-  }
+  const clickOnNext = () => {
+    navigation.navigate('VerifyOTP', {indexNumber});
+  };
 
   const [indexNumber, setIndexNumber] = useState();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.logoWrapper}>
-        <Image
-          style={styles.logoImage}
-          source={require('../assets/images/login_logo.png')}></Image>
-        <Text style={styles.logoText}> Nilkanth Medical </Text>
-      </View>
-      <View style={styles.formWrapper}>
-        <Text style={styles.formText}>
-          Please Enter your Mobile Number to Login/Sign Up
-        </Text>
-        <TextInput
-          placeholder="+84 764951786"
-          style={styles.formInput}
-          keyboardType = 'numeric'
-          onChangeText={(number) => setIndexNumber(number)}
-          value = {indexNumber}
-        />
-        <TouchableOpacity onPress={clickOnNext} style={styles.formButton}><Text style={styles.buttonText}>CONTINUE</Text></TouchableOpacity>
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+        <View style={styles.logoWrapper}>
+          <Image
+            style={styles.logoImage}
+            source={require('../assets/images/login_logo.png')}
+          />
+          <Text style={styles.logoText}> Nilkanth Medical </Text>
+        </View>
+        <View style={styles.formWrapper}>
+          <Text style={styles.formText}>
+            Please Enter your Mobile Number to Login/Sign Up
+          </Text>
+          <TextInput
+            placeholder="+84 764951786"
+            style={styles.formInput}
+            keyboardType="numeric"
+            onChangeText={number => setIndexNumber(number)}
+            value={indexNumber}
+          />
+          <TouchableOpacity onPress={clickOnNext} style={styles.formButton}>
+            <Text style={styles.buttonText}>CONTINUE</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 };
 
@@ -74,7 +89,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     textAlign: 'left',
     width: 300,
-    marginTop: 64
+    marginTop: 64,
   },
 
   formInput: {
@@ -85,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 12,
     fontSize: 20,
-    marginTop: 36
+    marginTop: 36,
   },
 
   formButton: {
@@ -101,8 +116,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: '500'
-  }
+    fontWeight: '500',
+  },
 });
 
 export default LoginScreen;

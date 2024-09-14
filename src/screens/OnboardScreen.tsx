@@ -1,5 +1,12 @@
 import React, {useRef, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
 type OnboardingCarousel = {
@@ -69,7 +76,7 @@ const OnboardScreen = ({navigation}: any) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.imageWrapper}>
         <Image
           source={require('../assets/images/onboard_image.png')}
@@ -127,7 +134,7 @@ const OnboardScreen = ({navigation}: any) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
