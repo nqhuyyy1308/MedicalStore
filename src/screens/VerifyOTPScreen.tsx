@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import React, {useEffect, useState} from 'react';
+import SuccessOTPScreen from './SuccessOTPScreen';
+import AntdesignIcon from 'react-native-vector-icons/AntDesign';
 
 const VerifyOTPScreen = ({route, navigation}: any) => {
   const {indexNumber} = route.params;
@@ -33,8 +35,15 @@ const VerifyOTPScreen = ({route, navigation}: any) => {
     };
   }, [second]);
 
+  const onClickNext = () => {
+    navigation.navigate('SuccessOTP');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <AntdesignIcon name="arrowleft" style={styles.backArrow} />
+      </TouchableOpacity>
       <View style={styles.contentWrapper}>
         <Text style={styles.contentH1}>Enter the verify code</Text>
         <Text style={styles.contentNotice}>
@@ -56,7 +65,7 @@ const VerifyOTPScreen = ({route, navigation}: any) => {
             console.log(`Code is ${code}, you are good to go!`);
           }}
         />
-        <TouchableOpacity style={styles.otpBtn}>
+        <TouchableOpacity style={styles.otpBtn} onPress={onClickNext}>
           <Text style={styles.otpBtnText}>SUBMIT CODE</Text>
         </TouchableOpacity>
       </View>
@@ -75,6 +84,12 @@ const VerifyOTPScreen = ({route, navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  backArrow: {
+    fontSize: 32,
+    marginLeft: 16,
+    color: '#090F47',
   },
 
   contentWrapper: {
