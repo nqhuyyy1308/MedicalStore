@@ -7,6 +7,7 @@ import OnboardScreen from './src/screens/OnboardScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import VerifyOTPScreen from './src/screens/VerifyOTPScreen';
 import SuccessOTPScreen from './src/screens/SuccessOTPScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,17 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="VerifyOTP" component={VerifyOTPScreen} />
         <Stack.Screen name="SuccessOTP" component={SuccessOTPScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            // headerShown: true,
+            headerStyle: {backgroundColor: '#4157FF'},
+            headerTransparent: false,
+            headerBackVisible: false,
+            headerTintColor: '#4157FF',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
