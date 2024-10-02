@@ -109,22 +109,26 @@ const OnboardScreen = ({navigation}: any) => {
             style={[
               styles.indexSelect,
               indexSelected === 0 && styles.indexSelected,
-            ]}></Text>
+            ]}
+          />
           <Text
             style={[
               styles.indexSelect,
               indexSelected === 1 && styles.indexSelected,
-            ]}></Text>
+            ]}
+          />
           <Text
             style={[
               styles.indexSelect,
               indexSelected === 2 && styles.indexSelected,
-            ]}></Text>
+            ]}
+          />
           <Text
             style={[
               styles.indexSelect,
               indexSelected === 3 && styles.indexSelected,
-            ]}></Text>
+            ]}
+          />
         </View>
         <TouchableOpacity
           onPress={onClickNext}
