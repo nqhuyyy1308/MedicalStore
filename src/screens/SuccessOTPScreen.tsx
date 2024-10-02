@@ -27,7 +27,7 @@ const SuccessOTPScreen = ({navigation}: any) => {
       <View style={styles.btnSuccess}>
         <TouchableOpacity
           style={styles.borderSuccess}
-          onPress={() => navigation.navigate('Home')}>
+          onPress={() => navigation.navigate('HomeTab')}>
           <Text style={styles.textSuccess}>CONTINUE</Text>
         </TouchableOpacity>
       </View>

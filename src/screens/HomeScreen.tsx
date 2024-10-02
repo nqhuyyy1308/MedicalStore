@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
   View,
@@ -5,56 +6,61 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  StatusBar,
   SafeAreaView,
-  TextInput,
 } from 'react-native';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+// import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {images} from '../assets/images/images';
-import MyStatusBar from '../components/CustomStatusBar';
+import SearchBar from '../components/SearchBar';
+import Categories from '../components/HomeCategories';
+import Sliders from '../components/HomeSlider';
+import ProductsDetail from '../components/HomeProducts';
 
-const HomeScreen = () => {
-  const insets = useSafeAreaInsets();
-
+const HomeScreen = ({navigation}: any) => {
+  // const insets = useSafeAreaInsets();
+  const onClickNext = () => {
+    navigation.navigate('Product');
+  };
   return (
-    <View style={[styles.container, {marginBottom: insets.bottom}]}>
-      <MyStatusBar statusBgColor="#4157FF">
-        <View style={styles.userAbout}>
-          <View style={styles.userWrapper}>
-            <Image source={images.userImage} style={styles.userAvatar} />
-            <View style={styles.userAction}>
-              <TouchableOpacity>
-                <IoniconsIcon
-                  name="notifications-outline"
-                  size={24}
-                  color={'#fff'}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <FeatherIcon name="shopping-bag" size={24} color={'#fff'} />
-              </TouchableOpacity>
+    <View style={{flex: 1, backgroundColor: '#4157FF'}}>
+      <SafeAreaView style={styles.container}>
+        <View style={{flex: 1, backgroundColor: '#F7FBFF'}}>
+          <View style={styles.userAbout}>
+            <View style={styles.userWrapper}>
+              <Image source={images.userImage} style={styles.userAvatar} />
+              <View style={styles.userAction}>
+                <TouchableOpacity>
+                  <IoniconsIcon
+                    name="notifications-outline"
+                    size={24}
+                    color={'#fff'}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <FeatherIcon name="shopping-bag" size={24} color={'#fff'} />
+                </TouchableOpacity>
+              </View>
             </View>
+            <View style={styles.userContent}>
+              <Text style={styles.userH1}>Hi, User</Text>
+              <Text style={styles.userDesc}>
+                Welcome to Nilkanth Medical Store
+              </Text>
+            </View>
+            <SearchBar />
           </View>
-          <View style={styles.userContent}>
-            <Text style={styles.userH1}>Hi, User</Text>
-            <Text style={styles.userDesc}>
-              Welcome to Nilkanth Medical Store
-            </Text>
+          <Categories />
+          <Sliders />
+          <View style={styles.productsContent}>
+            <Text style={styles.productsTitle}>Deals of the Day</Text>
+            <TouchableOpacity style={{width: 45}} onPress={onClickNext}>
+              <Text style={styles.productsOnclick}>More</Text>
+            </TouchableOpacity>
           </View>
+          <ProductsDetail />
         </View>
-        <View style={styles.searchBar}>
-          <AntDesignIcon
-            name="search1"
-            size={24}
-            color={'#888'}
-            style={{marginRight: 8, marginLeft: 8}}
-          />
-          <TextInput placeholder="Search Medicine products" />
-        </View>
-      </MyStatusBar>
+      </SafeAreaView>
     </View>
   );
 };
@@ -66,7 +72,6 @@ const styles = StyleSheet.create({
 
   userAbout: {
     backgroundColor: '#4157FF',
-    height: 200,
     borderBottomRightRadius: 28,
     borderBottomLeftRadius: 28,
   },
@@ -107,15 +112,20 @@ const styles = StyleSheet.create({
     marginVertical: 4,
   },
 
-  searchBar: {
-    width: 300,
-    height: 50,
-    borderRadius: 32,
-    fontSize: 24,
+  productsContent: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    marginHorizontal: 60,
+    justifyContent: 'space-between',
+    marginHorizontal: 16,
+  },
+  productsTitle: {
+    color: '#090F47',
+    fontSize: 20,
+    fontWeight: '600',
+  },
+  productsOnclick: {
+    color: '#006AFF',
+    fontSize: 18,
+    fontWeight: '400',
   },
 });
 
