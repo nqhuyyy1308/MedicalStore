@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     marginHorizontal: 60,
-    marginTop: 20,
+    marginTop: -20,
     transform: [
       {
         translateY: 25,

@@ -1,4 +1,6 @@
-/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import IoniconsIcon from 'react-native-vector-icons/Ionicons';
+import {images} from '../assets/images/images';
 import {
   FlatList,
   Image,
@@ -7,14 +9,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {images} from '../assets/images/images';
-import React from 'react';
-import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 
-const ProductsDetail = () => {
+const ListProducts = () => {
   const productsItem = [
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct1,
       id: '01',
       nameProducts: 'Accu-check Active Test Strip',
       prices: 'Rs.112',
@@ -26,10 +25,10 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct1,
       id: '02',
       nameProducts: 'Accu-check Active Test Strip',
       prices: 'Rs.112',
@@ -41,10 +40,10 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct1,
       id: '03',
       nameProducts: 'Accu-check Active Test Strip',
       prices: 'Rs.112',
@@ -56,13 +55,13 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct2,
       id: '04',
-      nameProducts: 'Accu-check Active Test Strip',
-      prices: 'Rs.112',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
       iconRated: (
         <IoniconsIcon
           name="star"
@@ -71,13 +70,13 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct2,
       id: '05',
-      nameProducts: 'Accu-check Active Test Strip',
-      prices: 'Rs.112',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
       iconRated: (
         <IoniconsIcon
           name="star"
@@ -86,13 +85,13 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
     {
-      imageProducts: images.homeProducts,
+      imageProducts: images.listProduct2,
       id: '06',
-      nameProducts: 'Accu-check Active Test Strip',
-      prices: 'Rs.112',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
       iconRated: (
         <IoniconsIcon
           name="star"
@@ -101,7 +100,7 @@ const ProductsDetail = () => {
           style={{marginLeft: 6}}
         />
       ),
-      numberRated: '2',
+      numberRated: '4.2',
     },
   ];
 
@@ -109,23 +108,19 @@ const ProductsDetail = () => {
     <FlatList
       showsVerticalScrollIndicator={false}
       numColumns={2}
-      style={{flex: 1}}
       data={productsItem}
       renderItem={({item}) => {
         return (
-          <TouchableOpacity style={styles.productsWrapper}>
-            <View style={styles.productsImg}>
+          <TouchableOpacity style={styles.productContainer}>
+            <View style={styles.productImg}>
               <Image source={item.imageProducts} />
             </View>
-            <View style={styles.productsFormContain}>
-              <Text style={styles.productsName}>{item.nameProducts}</Text>
-              <Text style={styles.productsPrice}>{item.prices}</Text>
-              <View style={styles.productsRated}>
+            <View style={styles.productItem}>
+              <Text style={styles.productTitle}>{item.nameProducts}</Text>
+              <Text style={styles.productPrice}>{item.prices}</Text>
+              <View style={styles.productRated}>
                 {item.iconRated}
-                <Text
-                  style={{marginHorizontal: 4, color: 'white', fontSize: 16}}>
-                  {item.numberRated}
-                </Text>
+                <Text style={styles.productRatedNum}>{item.numberRated}</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -136,52 +131,49 @@ const ProductsDetail = () => {
 };
 
 const styles = StyleSheet.create({
-  productsWrapper: {
-    marginLeft: 35,
-    marginTop: 12,
-    width: 160,
-    height: 240,
+  productContainer: {
     borderWidth: 1,
+    margin: 20,
+    width: 175,
+    height: 265,
     borderColor: '#EBEBEB',
-    borderRadius: 8,
-  },
-
-  productsImg: {
-    height: 150,
-    backgroundColor: '#f6f6f8',
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 12,
   },
-
-  productsFormContain: {},
-
-  productsName: {
+  productImg: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F5F7FA',
+    height: 160,
+  },
+  productItem: {},
+  productTitle: {
     color: '#090F47',
-    fontSize: 10,
+    fontSize: 12,
     fontWeight: '400',
     lineHeight: 20,
-    width: 100,
-    marginLeft: 8,
+    width: 110,
+    marginTop: 8,
   },
-
-  productsPrice: {
+  productPrice: {
     color: '#090F47',
     fontSize: 16,
     fontWeight: '600',
     lineHeight: 20,
-    marginLeft: 8,
+    marginTop: 4,
   },
-
-  productsRated: {
+  productRated: {
     backgroundColor: '#FFC000',
     width: 50,
-    marginLeft: 110,
+    marginLeft: 125,
     borderTopLeftRadius: 16,
     borderBottomLeftRadius: 16,
     flexDirection: 'row',
     alignItems: 'center',
   },
+  productRatedNum: {
+    marginHorizontal: 4,
+    color: 'white',
+    fontSize: 16,
+  },
 });
-
-export default ProductsDetail;
+export default ListProducts;
