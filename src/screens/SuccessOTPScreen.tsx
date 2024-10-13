@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Image,
   SafeAreaView,
@@ -24,7 +25,9 @@ const SuccessOTPScreen = ({navigation}: any) => {
         </View>
       </View>
       <View style={styles.btnSuccess}>
-        <TouchableOpacity style={styles.borderSuccess}>
+        <TouchableOpacity
+          style={styles.borderSuccess}
+          onPress={() => navigation.navigate('HomeTab')}>
           <Text style={styles.textSuccess}>CONTINUE</Text>
         </TouchableOpacity>
       </View>

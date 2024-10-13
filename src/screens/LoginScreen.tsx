@@ -10,23 +10,21 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {images} from '../assets/images/images';
 
 const LoginScreen = ({navigation}: any) => {
   const clickOnNext = () => {
     navigation.navigate('VerifyOTP', {indexNumber});
   };
 
-  const [indexNumber, setIndexNumber] = useState();
+  const [indexNumber, setIndexNumber] = useState<number>();
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.logoWrapper}>
-          <Image
-            style={styles.logoImage}
-            source={require('../assets/images/login_logo.png')}
-          />
+          <Image style={styles.logoImage} source={images.loginLogo} />
           <Text style={styles.logoText}> Nilkanth Medical </Text>
         </View>
         <View style={styles.formWrapper}>
