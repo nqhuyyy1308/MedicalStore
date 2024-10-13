@@ -7,6 +7,8 @@ import SuccessOTPScreen from '../screens/SuccessOTPScreen';
 import OnboardScreen from '../screens/OnboardScreen';
 import TabNavigator from './BottomTabNav';
 import ProductScreen from '../screens/ProductScreen';
+import ProductDetailScreen from '../screens/ProductDetailScreen';
+import ListProducts from '../components/ListProducts';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,11 @@ const BeforeLogin = () => {
         <Stack.Screen
           name="Product"
           component={ProductScreen}
+          options={{gestureEnabled: true}}
+        />
+        <Stack.Screen
+          name="ProductDetail"
+          component={ProductDetailScreen}
           options={{gestureEnabled: true}}
         />
       </Stack.Navigator>
