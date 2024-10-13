@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import {images} from '../assets/images/images';
@@ -10,12 +11,15 @@ import {
   View,
 } from 'react-native';
 
-const ListProducts = () => {
+const ListProducts = (props: any) => {
+  const onClickNext = (itemProduct: any) => {
+    props.onProductClick(itemProduct);
+  };
   const productsItem = [
     {
       imageProducts: images.listProduct1,
       id: '01',
-      nameProducts: 'Accu-check Active Test Strip',
+      nameProducts: 'Sugar Free Gold Low Calories',
       prices: 'Rs.112',
       iconRated: (
         <IoniconsIcon
@@ -30,7 +34,7 @@ const ListProducts = () => {
     {
       imageProducts: images.listProduct1,
       id: '02',
-      nameProducts: 'Accu-check Active Test Strip',
+      nameProducts: 'Sugar Free Gold Low Calories',
       prices: 'Rs.112',
       iconRated: (
         <IoniconsIcon
@@ -45,7 +49,7 @@ const ListProducts = () => {
     {
       imageProducts: images.listProduct1,
       id: '03',
-      nameProducts: 'Accu-check Active Test Strip',
+      nameProducts: 'Sugar Free Gold Low Calories',
       prices: 'Rs.112',
       iconRated: (
         <IoniconsIcon
@@ -111,7 +115,11 @@ const ListProducts = () => {
       data={productsItem}
       renderItem={({item}) => {
         return (
-          <TouchableOpacity style={styles.productContainer}>
+          <TouchableOpacity
+            style={styles.productContainer}
+            onPress={() => {
+              onClickNext(item);
+            }}>
             <View style={styles.productImg}>
               <Image source={item.imageProducts} />
             </View>
