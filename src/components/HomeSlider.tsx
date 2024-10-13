@@ -25,7 +25,7 @@ const Sliders = () => {
     <FlatList
       horizontal={true}
       showsHorizontalScrollIndicator={false}
-      style={{flex: 1, marginTop: 16}}
+      style={{flex: 1, marginTop: 12}}
       data={sliderItem}
       renderItem={({item}) => {
         return (
@@ -44,6 +44,16 @@ const Sliders = () => {
 const styles = StyleSheet.create({
   sliderCarousel: {
     marginHorizontal: 16,
+    marginLeft: 50,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
 });
 

@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#4157FF',
     borderBottomRightRadius: 28,
     borderBottomLeftRadius: 28,
+    height: 180,
   },
 
   userWrapper: {
@@ -115,16 +116,17 @@ const styles = StyleSheet.create({
   productsContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 16,
+    marginHorizontal: 20,
+    marginTop: -90,
   },
   productsTitle: {
     color: '#090F47',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
   },
   productsOnclick: {
     color: '#006AFF',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '400',
   },
 });

@@ -12,15 +12,15 @@ const Categories = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.borderCate}>
           <View style={styles.colorCate2} />
-          <Text style={styles.textCate}>Dental</Text>
+          <Text style={styles.textCate}>Wellness</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.borderCate}>
           <View style={styles.colorCate3} />
-          <Text style={styles.textCate}>Dental</Text>
+          <Text style={styles.textCate}>Homeo</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.borderCate}>
           <View style={styles.colorCate4} />
-          <Text style={styles.textCate}>Dental</Text>
+          <Text style={styles.textCate}>Eye care</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   container: {},
 
   h1Cate: {
-    marginVertical: 20,
+    marginVertical: 12,
     marginTop: 40,
     marginLeft: 24,
     fontSize: 16,
@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
 
   borderCate: {
     backgroundColor: 'white',
-    width: 70,
-    height: 120,
+    width: 55,
+    height: 90,
     borderRadius: 70,
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -64,32 +64,32 @@ const styles = StyleSheet.create({
 
   colorCate: {
     borderRadius: 32,
-    height: 60,
-    width: 55,
+    height: 45,
+    width: 40,
     marginTop: 8,
     backgroundColor: '#FF70A7',
   },
 
   colorCate2: {
     borderRadius: 32,
-    height: 60,
-    width: 55,
+    height: 45,
+    width: 40,
     marginTop: 8,
     backgroundColor: '#15BD92',
   },
 
   colorCate3: {
     borderRadius: 32,
-    height: 60,
-    width: 55,
+    height: 45,
+    width: 40,
     marginTop: 8,
     backgroundColor: '#FF793A',
   },
 
   colorCate4: {
     borderRadius: 32,
-    height: 60,
-    width: 55,
+    height: 45,
+    width: 40,
     marginTop: 8,
     backgroundColor: '#3E7DFF',
   },
