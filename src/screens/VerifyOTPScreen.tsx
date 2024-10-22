@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import React, {useEffect, useState} from 'react';
+import SuccessOTPScreen from './SuccessOTPScreen';
 import AntdesignIcon from 'react-native-vector-icons/AntDesign';
 
 const VerifyOTPScreen = ({route, navigation}: any) => {

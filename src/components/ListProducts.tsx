@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 import {images} from '../assets/images/images';
@@ -11,61 +10,99 @@ import {
   View,
 } from 'react-native';
 
-const productsItem = [
-  {
-    imageProducts: images.listProduct1,
-    id: '01',
-    nameProducts: 'Sugar Free Gold Low Calories',
-    prices: 'Rs.112',
-    numberRated: '4.2',
-  },
-
-  {
-    imageProducts: images.listProduct1,
-    id: '02',
-    nameProducts: 'Sugar Free Gold Low Calories',
-    prices: 'Rs.112',
-    numberRated: '4.2',
-  },
-
-  {
-    imageProducts: images.listProduct1,
-    id: '03',
-    nameProducts: 'Sugar Free Gold Low Calories',
-    prices: 'Rs.112',
-    numberRated: '4.2',
-  },
-
-  {
-    imageProducts: images.listProduct2,
-    id: '04',
-    nameProducts: 'Omron HEM-8712 BP Monitor',
-    prices: 'Rs.150',
-    numberRated: '4.2',
-  },
-
-  {
-    imageProducts: images.listProduct2,
-    id: '05',
-    nameProducts: 'Omron HEM-8712 BP Monitor',
-    prices: 'Rs.150',
-    numberRated: '4.2',
-  },
-
-  {
-    imageProducts: images.listProduct2,
-    id: '06',
-    nameProducts: 'Omron HEM-8712 BP Monitor',
-    prices: 'Rs.150',
-    numberRated: '4.2',
-  },
-
-];
-
-const ListProducts = (props: any) => {
-  const onClickNext = (itemProduct: any) => {
-    props.onProductClick(itemProduct);
-  };
+const ListProducts = () => {
+  const productsItem = [
+    {
+      imageProducts: images.listProduct1,
+      id: '01',
+      nameProducts: 'Accu-check Active Test Strip',
+      prices: 'Rs.112',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+    {
+      imageProducts: images.listProduct1,
+      id: '02',
+      nameProducts: 'Accu-check Active Test Strip',
+      prices: 'Rs.112',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+    {
+      imageProducts: images.listProduct1,
+      id: '03',
+      nameProducts: 'Accu-check Active Test Strip',
+      prices: 'Rs.112',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+    {
+      imageProducts: images.listProduct2,
+      id: '04',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+    {
+      imageProducts: images.listProduct2,
+      id: '05',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+    {
+      imageProducts: images.listProduct2,
+      id: '06',
+      nameProducts: 'Omron HEM-8712 BP Monitor',
+      prices: 'Rs.150',
+      iconRated: (
+        <IoniconsIcon
+          name="star"
+          color={'#fff'}
+          size={16}
+          style={{marginLeft: 6}}
+        />
+      ),
+      numberRated: '4.2',
+    },
+  ];
 
   return (
     <FlatList
@@ -74,11 +111,7 @@ const ListProducts = (props: any) => {
       data={productsItem}
       renderItem={({item}) => {
         return (
-          <TouchableOpacity
-            style={styles.productContainer}
-            onPress={() => {
-              onClickNext(item);
-            }}>
+          <TouchableOpacity style={styles.productContainer}>
             <View style={styles.productImg}>
               <Image source={item.imageProducts} />
             </View>
@@ -86,12 +119,7 @@ const ListProducts = (props: any) => {
               <Text style={styles.productTitle}>{item.nameProducts}</Text>
               <Text style={styles.productPrice}>{item.prices}</Text>
               <View style={styles.productRated}>
-              <IoniconsIcon
-                name="star"
-                color={'#fff'}
-                size={16}
-                style={{marginLeft: 6}}
-              />
+                {item.iconRated}
                 <Text style={styles.productRatedNum}>{item.numberRated}</Text>
               </View>
             </View>

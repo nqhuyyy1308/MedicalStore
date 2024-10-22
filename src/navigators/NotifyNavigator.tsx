@@ -6,7 +6,7 @@ const NotifyNavigator = () => {
   const NotifyStack = createNativeStackNavigator();
   return (
     <NotifyStack.Navigator>
-      <NotifyStack.Screen name="Notify" component={NotifyScreen} options={{headerShown: false}}/>
+      <NotifyStack.Screen name="Notify" component={NotifyScreen} />
     </NotifyStack.Navigator>
   );
 };
