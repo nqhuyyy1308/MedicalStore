@@ -11,7 +11,7 @@ import {images} from '../assets/images/images';
 import React from 'react';
 import IoniconsIcon from 'react-native-vector-icons/Ionicons';
 
-const ProductsDetail = () => {
+const ProductsHot = () => {
   const productsItem = [
     {
       imageProducts: images.homeProducts,
@@ -184,4 +184,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductsDetail;
+export default ProductsHot;

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import NotifyNavigator from './NotifyNavigator';

@@ -15,7 +15,7 @@ import {images} from '../assets/images/images';
 import SearchBar from '../components/SearchBar';
 import Categories from '../components/HomeCategories';
 import Sliders from '../components/HomeSlider';
-import ProductsDetail from '../components/HomeProducts';
+import ProductsHot from '../components/HomeProducts';
 
 const HomeScreen = ({navigation}: any) => {
   // const insets = useSafeAreaInsets();
@@ -58,7 +58,7 @@ const HomeScreen = ({navigation}: any) => {
               <Text style={styles.productsOnclick}>More</Text>
             </TouchableOpacity>
           </View>
-          <ProductsDetail />
+          <ProductsHot />
         </View>
       </SafeAreaView>
     </View>

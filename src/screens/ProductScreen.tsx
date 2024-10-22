@@ -7,6 +7,10 @@ import ListProducts from '../components/ListProducts';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const ProductScreen = ({navigation}: any) => {
+  const onProductClick = (itemProduct: any) => {
+    navigation.navigate('ProductDetail', {itemProduct});
+  };
+
   const insets = useSafeAreaInsets();
   return (
     <View
@@ -39,7 +43,7 @@ const ProductScreen = ({navigation}: any) => {
         </View>
       </View>
       <Text style={styles.productTitle}>All Products</Text>
-      <ListProducts />
+      <ListProducts onProductClick={onProductClick} />
     </View>
   );
 };
